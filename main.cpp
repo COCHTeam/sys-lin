@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
+#include "Matrix.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    auto A = Matrix(10);
+    A.print();
     return 0;
 }
