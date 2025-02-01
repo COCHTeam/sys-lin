@@ -4,26 +4,26 @@
 
 #ifndef MATRIX_H
 #define MATRIX_H
-#include <vector>
 
+#include <stdbool.h>
 
-class Matrix {
-    int** _mat;
+typedef struct {
+    double** _mat;
     int _size;
-public:
-    explicit Matrix(int size);
-    ~Matrix();
-    void print() const;
-    [[nodiscard]] int size() const { return _size; }
+} Matrix;
 
-    void set(int i, int j, int value) const;
-    void set(int** array) const;
-    int get(int i, int j);
-    [[nodiscard]] Matrix multiply(const Matrix& rhs) const;
+Matrix* MatrixBuilder(int size);
+void MatrixDestroyer(Matrix* matrix);
 
-    bool operator==(const Matrix& rhs) const;
-};
+void MatrixPrint(Matrix* matrix);
+[[nodiscard]] inline int MatrixSize(const Matrix* mat) { return mat->_size; }
 
+void MatrixSetAt(Matrix* matrix, int i, int j, double value);
+void MatrixSetWhole(Matrix* matrix, double** array);
+double MatrixGetAt(const Matrix* matrix, int i, int j);
+
+Matrix* MatrixMultiply(const Matrix* first,const Matrix* second);
+bool MatrixEqual(const Matrix *first, const Matrix *second);
 
 
 #endif //MATRIX_H

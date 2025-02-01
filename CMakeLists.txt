@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.29)
-project(lin_sys)
+project(lin_sys C)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_C_STANDARD 11)
 
-add_executable(lin_sys main.cpp
-        Matrix.cpp
-        Matrix.h)
+add_executable(lin_sys main.c
+        matrix.c
+        matrix.h)
