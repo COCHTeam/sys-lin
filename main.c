@@ -9,9 +9,10 @@ int main() {
     printf("Pass test : %d\n\n", test_matrix());
 
     // On initialise la matrice A_0
-    //        2 -1  0
-    // A_0 = -1  2 -1
-    //        0 -1  2
+    //        2 -1  0  5
+    // A_0 = -1  2 -1  3
+    //        0 -1  2  2
+    //        5  3  2  4
     const int size = 4;
     Matrix* A_0 = MatrixBuilder(size);
     MatrixSetAt(A_0, 0,0,2);
