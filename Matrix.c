@@ -24,6 +24,20 @@ void MatrixDestroyer(Matrix* matrix) {
     free(matrix->_mat);
 }
 
+void MatrixCopy(Matrix *targetMatrix, Matrix *matrixToCopy) {
+    for (int i = 0; i < targetMatrix->_size; i++) {
+        for (int j = 0; j < targetMatrix->_size; j++) {
+            targetMatrix->_mat[i][j] = matrixToCopy->_mat[i][j];
+        }
+    }
+}
+
+void MatrixSetOne(Matrix* matrix) {
+    for (int i = 0; i < matrix->_size; i++) {
+        matrix->_mat[i][i] = 1;
+    }
+}
+
 void MatrixPrint(Matrix* matrix) {
     for (int i = 0; i < matrix->_size; i++) {
         for (int j = 0; j < matrix->_size; j++) {
@@ -70,6 +84,25 @@ Matrix* MatrixMultiply(const Matrix* first,const Matrix* second) {
         }
     }
     return result;
+}
+
+Matrix * MatrixAdd(const Matrix *first, const Matrix *second) {
+    Matrix* result = MatrixBuilder(first->_size);
+    for (int i = 0; i < first->_size; i++) {
+        for (int j = 0; j < first->_size; j++) {
+            MatrixSetAt(result,i,j,first->_mat[i][j]+second->_mat[i][j]);
+        }
+    }
+    return result;
+}
+
+void MatrixOppose(const Matrix *first) {
+    for (int i = 0; i < first->_size; i++) {
+        for (int j = 0; j < first->_size; j++) {
+            if(first->_mat[i][j])
+                first->_mat[i][j]=-first->_mat[i][j];
+        }
+    }
 }
 
 bool MatrixEqual(const Matrix *first, const Matrix *second) {
